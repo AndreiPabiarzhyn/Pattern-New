@@ -360,9 +360,9 @@ function scaleGameContainer() {
   const container = document.getElementById('game-container');
   if (!wrapper || !container) return;
   
-  // Определяем базовую ширину игры (заданную в CSS, max-width: 1200px)
+  // Базовая ширина, заданная в CSS для #game-container
   const baseWidth = 1200;
-  // Определяем текущую высоту контейнера (она может быть динамической)
+  // Определяем текущую высоту контейнера
   const containerHeight = container.offsetHeight;
   
   // Вычисляем масштаб по ширине и высоте родительского контейнера (wrapper)
@@ -371,7 +371,7 @@ function scaleGameContainer() {
   const scale = Math.min(scaleX, scaleY);
   
   container.style.transform = `scale(${scale})`;
-  container.style.transformOrigin = 'top left';
+  container.style.transformOrigin = 'center center';
 }
 
 // Вызываем масштабирование при загрузке и изменении размера окна
