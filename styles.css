@@ -14,16 +14,20 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Игровой контейнер */
 #game-container {
   max-width: 1200px;
-  margin: 50px auto;
+  max-height: 90vh;  /* Ограничение по высоте */
+  margin: 0;         /* Отменяем автоматические отступы, т.к. центрирование через flex */
   padding: 20px;
   background: rgba(0, 0, 0, 0.75);
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  /* Без transform здесь – масштаб будет применяться через JS */
 }
 
 /* Правила игры */
