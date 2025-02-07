@@ -9,6 +9,13 @@ body {
   padding: 0;
 }
 
+/* Контейнер для масштабирования */
+#scale-wrapper {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
 #game-container {
   max-width: 1200px;
   margin: 50px auto;
@@ -16,19 +23,20 @@ body {
   background: rgba(0, 0, 0, 0.75);
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  /* Без transform здесь – масштаб будет применяться через JS */
 }
 
 /* Правила игры */
 #rules {
   background: rgba(255, 255, 255, 0.2);
-  padding: 2px;
+  padding: 15px;
   border-radius: 5px;
   margin-bottom: 20px;
 }
 
 /* Заголовок */
 #header {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 #timer {
@@ -145,8 +153,9 @@ body {
   transform: translateY(2px);
 }
 
+/* Подсветка для активной кнопки контраста */
 .control-btn.active {
-  background: #ff9800; /* яркий оттенок для выделения */
+  background: #ff9800;
   box-shadow: 0 0 10px rgba(255, 152, 0, 0.8);
   transform: scale(1.05);
 }
