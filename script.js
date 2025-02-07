@@ -1,4 +1,4 @@
-// Массив уровней
+// Массив уровней (без изменений)
 const levels = [
   // Уровень 1
   [
@@ -92,7 +92,7 @@ let startTime;
 let timerInterval;
 let contrastMode = false; // Глобальный флаг режима контраста
 
-// Карта для режим контраста (цветы, подобранные для лучшей различимости)
+// Карта для режима контраста (цвета, подобранные для лучшей различимости)
 const contrastMapping = {
   "red": "#d7191c",
   "blue": "#2c7bb6",
@@ -341,7 +341,7 @@ function updateContrastColors() {
   });
 }
 
-// Функция переключения режима контраста
+// Функция переключения режима контраста с подсветкой кнопки
 function toggleContrastMode() {
   contrastMode = !contrastMode;
   updateContrastColors();
@@ -353,3 +353,27 @@ function toggleContrastMode() {
     contrastBtn.classList.remove('active');
   }
 }
+
+/* -------------- Функция автоматического масштабирования -------------- */
+function scaleGameContainer() {
+  const wrapper = document.getElementById('scale-wrapper');
+  const container = document.getElementById('game-container');
+  if (!wrapper || !container) return;
+  
+  // Определяем базовую ширину игры (заданную в CSS, max-width: 1200px)
+  const baseWidth = 1200;
+  // Определяем текущую высоту контейнера (она может быть динамической)
+  const containerHeight = container.offsetHeight;
+  
+  // Вычисляем масштаб по ширине и высоте родительского контейнера (wrapper)
+  const scaleX = wrapper.clientWidth / baseWidth;
+  const scaleY = wrapper.clientHeight / containerHeight;
+  const scale = Math.min(scaleX, scaleY);
+  
+  container.style.transform = `scale(${scale})`;
+  container.style.transformOrigin = 'top left';
+}
+
+// Вызываем масштабирование при загрузке и изменении размера окна
+window.addEventListener('load', scaleGameContainer);
+window.addEventListener('resize', scaleGameContainer);
