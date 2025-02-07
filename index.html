@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Составь узор</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="game-container">
+    <div id="rules">
+      <h2>Правила игры:</h2>
+      <p>1. Перетаскивайте элементы из левого окна в центральное поле.</p>
+      <p>2. Составьте точно такой же узор, как показан справа.</p>
+      <p>3. Нажмите "Проверить", когда будете готовы.</p>
+      <p>4. Попробуйте собрать узор как можно быстрее!</p>
+      <p>5. Чтобы удалить перемещённую фигуру, просто кликните по ней в рабочей области.</p>
+    </div>
+    <div id="header">
+      <h1>Составь узор</h1>
+      <div id="timer">Время: 00:00</div>
+    </div>
+    <div id="levels">
+      <button class="level-btn" onclick="selectLevel(1)" id="level-1">Уровень 1</button>
+      <button class="level-btn" onclick="selectLevel(2)" id="level-2" disabled>Уровень 2</button>
+      <button class="level-btn" onclick="selectLevel(3)" id="level-3" disabled>Уровень 3</button>
+      <button class="level-btn" onclick="selectLevel(4)" id="level-4" disabled>Уровень 4</button>
+      <button class="level-btn" onclick="selectLevel(5)" id="level-5" disabled>Уровень 5</button>
+      <button class="level-btn" onclick="selectLevel(6)" id="level-6" disabled>Уровень 6</button>
+      <button class="level-btn" onclick="selectLevel(7)" id="level-7" disabled>Уровень 7</button>
+      <button class="level-btn" onclick="selectLevel(8)" id="level-8" disabled>Уровень 8</button>
+    </div>
+    <div id="game-area">
+      <div id="pieces"></div>
+      <div id="workspace"></div>
+      <div id="pattern"></div>
+    </div>
+    <div id="controls">
+      <button class="control-btn" onclick="checkPattern()">Проверить</button>
+      <button class="control-btn" onclick="resetLevel()">Начать заново</button>
+      <!-- Кнопка переключения режима контраста -->
+<!-- Кнопка переключения режима контраста -->
+     <button class="control-btn" onclick="toggleContrastMode()" id="contrast-btn">Режим контраста</button>
+
+    <div id="victory-screen" style="display:none;">
+      <h2>Поздравляем!</h2>
+      <p>Вы собрали узор за <span id="final-time"></span></p>
+      <button class="control-btn" onclick="nextLevel()">Следующий уровень</button>
+    </div>
+    <div id="final-victory-overlay" style="display:none;">
+      <div class="final-victory-content">
+        <h2>Поздравляем!</h2>
+        <p>Вы прошли все уровни!</p>
+        <img src="https://767416.selcdn.ru/production_kodland_main_public/task_description_materials/8050f230-c8bf-400e-ae56-797a049f9274.gif" alt="Final Victory">
+        <button class="control-btn" onclick="restartGame()">Начать заново</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
