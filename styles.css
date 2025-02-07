@@ -15,20 +15,25 @@ body {
   height: 100vh;
   overflow: hidden;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center;     /* центрирование по горизонтали */
+  align-items: flex-start;      /* выравнивание по верхней границе */
+  padding-top: 20px;            /* отступ сверху, подберите нужное значение */
+  box-sizing: border-box;
 }
 
-/* Игровой контейнер */
+
+/* Игровой контейнер с фиксированными базовыми размерами */
 #game-container {
-  max-width: 1200px;
-  max-height: 90vh;  /* Ограничение по высоте */
-  margin: 0;         /* Отменяем автоматические отступы, т.к. центрирование через flex */
-  padding: 20px;
+  width: 1200px;
+  height: 800px; /* базовая высота (подберите нужное значение) */
+  padding: 40px;
   background: rgba(0, 0, 0, 0.75);
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  /* Центрирование будет осуществляться через transform, поэтому margin можно убрать */
+  margin: 0;
 }
+
 
 /* Правила игры */
 #rules {
