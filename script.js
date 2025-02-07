@@ -356,24 +356,27 @@ function toggleContrastMode() {
 
 /* -------------- Функция автоматического масштабирования -------------- */
 function scaleGameContainer() {
-  const wrapper = document.getElementById('scale-wrapper');
   const container = document.getElementById('game-container');
-  if (!wrapper || !container) return;
+  if (!container) return;
   
-  // Базовая ширина, заданная в CSS для #game-container
+  // Базовые размеры, для которых был рассчитан дизайн игры:
   const baseWidth = 1200;
-  // Определяем текущую высоту контейнера
-  const containerHeight = container.offsetHeight;
+  const baseHeight = 1000;
   
-  // Вычисляем масштаб по ширине и высоте родительского контейнера (wrapper)
-  const scaleX = wrapper.clientWidth / baseWidth;
-  const scaleY = wrapper.clientHeight / containerHeight;
-  const scale = Math.min(scaleX, scaleY);
+  // Получаем доступные размеры окна
+  const availableWidth = window.innerWidth;
+  const availableHeight = window.innerHeight;
   
-  container.style.transform = `scale(${scale})`;
-  container.style.transformOrigin = 'center center';
+  // Вычисляем масштаб так, чтобы контейнер полностью помещался в окно
+  const scaleFactor = Math.min(availableWidth / baseWidth, availableHeight / baseHeight);
+  
+  container.style.transform = `scale(${scaleFactor})`;
+  // При таком подходе лучше фиксировать верхнюю часть контейнера, чтобы он не «уходил» за пределы окна
+  container.style.transformOrigin = 'top center';
 }
 
-// Вызываем масштабирование при загрузке и изменении размера окна
+// Вызываем функцию масштабирования при загрузке и изменении размеров окна
 window.addEventListener('load', scaleGameContainer);
 window.addEventListener('resize', scaleGameContainer);
+
+
